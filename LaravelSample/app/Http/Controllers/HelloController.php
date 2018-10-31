@@ -12,6 +12,7 @@ class HelloController extends Controller
       //$html = '<html><body><p>これは追加されたアクションです。</p></body></html>';
       $html = <<<EOF
       <html><body>
+        <p>index</p>
         <a href="hello/chapter1">Chapter1</a><br>
         <a href="hello/chapter2">Chapter2</a><br>
         <a href="hello/chapter3">Chapter3</a><br>
