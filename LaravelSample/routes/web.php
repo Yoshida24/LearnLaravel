@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Middleware\HelloMiddleware;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -48,6 +50,9 @@ Route::get('hello/chapter3','HelloController@chapter3');
 
 /*Chapter4*/
 Route::get('hello/chapter4','HelloController@chapter4');
+//Route::get('hello/chapter4/middlewareSample1','HelloController@middlewareSample1');
+//Route::get('hello/chapter4/middlewareSample1','HelloController@middlewareSample1')->middleware(HelloMiddleware::class);
+Route::get('hello/chapter4/middlewareSample1','HelloController@middlewareSample1')->middleware('helo');
 
 /*Chapter5*/
 Route::get('hello/chapter5','HelloController@chapter5');
@@ -58,9 +63,8 @@ Route::get('hello/chapter6','HelloController@chapter6');
 /*Chapter7*/
 Route::get('hello/chapter7','HelloController@chapter7');
 
-// comit test
-Route::get('hellowithparam/{param1}/{param2?}','HelloController@hellowithparam');
 
+Route::get('hellowithparam/{param1}/{param2?}','HelloController@hellowithparam');
 Route::get('hello/templatesample','HelloController@templateSample');
 Route::get('hello/querystringsample','HelloController@queryStringSample');
 Route::get('hello/formsample1','HelloController@formSample1');

@@ -116,4 +116,9 @@ EOF;
     $data = ['msg'=>$request->msg];
     return view('hello.index',$data);
   }
+
+  /* Section4 */
+  public function middlewareSample1(Request $request){
+    return view('hello.chapter4-middlewareSample',['data'=>$request->data]);
+  }
 }
