@@ -56,12 +56,28 @@ Route::get('hello/chapter4/middlewareSample1','HelloController@middlewareSample1
 
 /*Chapter5*/
 Route::get('hello/chapter5','HelloController@chapter5');
+Route::get('hello/chapter5/dbSample1','HelloController@dbSample1');
 
 /*Chapter6*/
 Route::get('hello/chapter6','HelloController@chapter6');
+Route::get('hello/chapter6/eloquentSample1','PersonController@eloquentSample1');
+Route::get('hello/chapter6/eloquentSample2','PersonController@eloquentSample2');
+Route::get('hello/chapter6/eloquentSample3','PersonController@eloquentSample3');
+Route::get('hello/chapter6/eloquentSample4','PersonController@find');
+Route::post('hello/chapter6/eloquentSample4','PersonController@search');
+Route::get('hello/chapter6/eloquentSample5','PersonController@add');
+Route::post('hello/chapter6/eloquentSample5','PersonController@create');
+Route::get('hello/chapter6/eloquentSample6','PersonController@edit');
+Route::post('hello/chapter6/eloquentSample6','PersonController@update');
+Route::get('hello/chapter6/eloquentSample7','PersonController@delete');
+Route::post('hello/chapter6/eloquentSample7','PersonController@remove');
+Route::get('hello/chapter6/eloquentSample8','BoardController@index');
+Route::get('hello/chapter6/eloquentSample9','BoardController@add');
+Route::post('hello/chapter6/eloquentSample9','BoardController@create');
 
 /*Chapter7*/
 Route::get('hello/chapter7','HelloController@chapter7');
+Route::resource('rest','RestappController');
 
 
 Route::get('hellowithparam/{param1}/{param2?}','HelloController@hellowithparam');

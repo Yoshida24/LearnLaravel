@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class HelloController extends Controller
 {
@@ -120,5 +121,11 @@ EOF;
   /* Section4 */
   public function middlewareSample1(Request $request){
     return view('hello.chapter4-middlewareSample',['data'=>$request->data]);
+  }
+
+  /* Section5 */
+  public function dbSample1(Request $request){
+    $items = DB::select('select * from people');
+    return view('hello.chapter5-dbSample1',['items'=>$items]);
   }
 }
