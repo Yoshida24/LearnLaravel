@@ -77,6 +77,12 @@ Route::post('hello/chapter6/eloquentSample9','BoardController@create');
 
 /*Chapter7*/
 Route::get('hello/chapter7','HelloController@chapter7');
+Route::get('hello/chapter7-1','RestappController@create');
+Route::post('hello/chapter7-1','RestappController@store');
+Route::get('hello/rest','HelloController@rest');
+Route::get('hello/session','HelloController@ses_get');
+Route::post('hello/session','HelloController@ses_put');
+
 Route::resource('rest','RestappController');
 
 
