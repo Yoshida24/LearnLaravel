@@ -51,7 +51,8 @@ class RestappController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Restdata::find($id);
+        return $item->toArray();
     }
 
     /**

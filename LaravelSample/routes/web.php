@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 /*index*/
-Route::get('hello','HelloController@index');
+Route::get('hello','HelloController@index')->middleware('auth');
 
 /*Chapter1*/
 Route::get('hello/chapter1','HelloController@chapter1');
@@ -91,3 +91,11 @@ Route::get('hello/templatesample','HelloController@templateSample');
 Route::get('hello/querystringsample','HelloController@queryStringSample');
 Route::get('hello/formsample1','HelloController@formSample1');
 Route::post('hello','HelloController@formSample2');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

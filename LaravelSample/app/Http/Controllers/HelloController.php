@@ -2,28 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use App\Person;
 
 class HelloController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
       //$html = '<html><body><p>これは追加されたアクションです。</p></body></html>';
-      $html = <<<EOF
-      <html><body>
-        <p>index</p>
-        <a href="hello/chapter1">Chapter1</a><br>
-        <a href="hello/chapter2">Chapter2</a><br>
-        <a href="hello/chapter3">Chapter3</a><br>
-        <a href="hello/chapter4">Chapter4</a><br>
-        <a href="hello/chapter5">Chapter5</a><br>
-        <a href="hello/chapter6">Chapter6</a><br>
-        <a href="hello/chapter7">Chapter7</a><br>
-      </body></html>
-EOF;
-      return $html;
+
+      /*
+      $sort = $request->sort;
+      $items=DB::table('people')->orderBy($sort,'asc')->paginate(2);
+      $param = ['items'=>$items,'sort' => $sort];
+      return view('hello.index',$param);
+      */
+
+      $user = Auth::user();
+      $sort = $request->sort;
+      if($sort==null)$sort='name';
+      $items = Person::orderBy($sort,'asc')->paginate(2);
+      $param =['user'=>$user,'sort'=>$sort,'items'=>$items];
+      return view('hello.index',$param);
   }
 
   public function chapter1(){
@@ -133,15 +136,17 @@ EOF;
     return view('hello.rest');
   }
 
-    public function ses_get(Request $request){
+  public function ses_get(Request $request){
       $sesdata = $request->session()->get('msg');
       return view('hello.session',['session_data'=>$sesdata]);
-    }
+  }
 
-      public function ses_put(Request $request){
+  public function ses_put(Request $request){
         $msg = $request->input;
         $request->session()->put('msg',$msg);
         $sesdata = $request->session()->get('msg');
         return redirect('hello/session');
-      }
+  }
+
+
 }
